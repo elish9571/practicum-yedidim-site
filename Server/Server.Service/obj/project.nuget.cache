@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "/1YcsAQLk/c6eR9MdrINpqzzztKAc24Bj7B9WEYTTHZ+W4LH82NbGtCOK5jX0NQdVUSG+W7OeBu0IpfS+hIvXw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\1\\Documents\\שנה ב לימודים\\פרקטיקום\\Server\\Server.Service\\Server.Service.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\1\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\1\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}
