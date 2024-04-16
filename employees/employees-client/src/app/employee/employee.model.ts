@@ -1,4 +1,4 @@
-import { Job } from "../job/job.model"
+import { JobPosition } from "../jobPosition/jobPosition.model"
 
 export class Employee {
     firstName!:string
@@ -7,5 +7,6 @@ export class Employee {
     beginningOfWork!: Date  
     birthDate!:Date
     isMale!: boolean 
-    jobs: Job[] = []   
+    isDeleted!:boolean
+    jobPositions: JobPosition[] = []   
 }

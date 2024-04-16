@@ -10,7 +10,6 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { NgFor, NgIf } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
-
 @Component({
   selector: 'app-add-employee',
   standalone: true,
@@ -35,14 +34,13 @@ export class AddEmployeeComponent {
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private route: Router) {
     this.empForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      tz: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9), Validators.pattern('^[0-9]*$')]],
-      beginningOfWork: ['', Validators.required],
-      birthDate: ['', Validators.required],
-      isMale: [true, Validators.required],
-      startDate: ['', Validators.required],
-      jobs: this.fb.array([])
+      firstName: ['',[Validators.required]],
+      lastName: ['',[Validators.required]],
+      tz: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9), Validators.pattern('[0-9]*')]],
+      beginningOfWork: ['',[Validators.required]],
+      birthDate: ['',[Validators.required]],
+      isMale: [true,[Validators.required]],
+      jobPositions: this.fb.array([],[Validators.required])
     });
   }
 //   ngOnInit(): void {
@@ -65,10 +63,11 @@ export class AddEmployeeComponent {
         firstName: this.empForm.get('firstName')?.value,
         lastName: this.empForm.get('lastName')?.value,
         tz: this.empForm.get('tz')?.value,
-        beginningOfWork: this.empForm.get('beginningOfWork')?.value,
-        birthDate: this.empForm.get('birthDate')?.value,
+        beginningOfWork: new Date(this.empForm.get('beginningOfWork')?.value),
+        birthDate: new Date(this.empForm.get('birthDate')?.value),  
         isMale: this.empForm.get('isMale')?.value,
-        jobs: this.empForm.get('jobs')?.value
+        isDeleted: false,
+        jobPositions: this.empForm.get('jobPositions')?.value
       };
 
       this.employeeService.addEmployee(employee).subscribe({
@@ -78,7 +77,7 @@ export class AddEmployeeComponent {
           this.route.navigate(['/allemployees']);
         },
         error: (err) => {
-          console.log('Error:', err);
+          console.log('Error:', err.message, err.status,err.error);
           alert('An error occurred while adding an employee. Please try again.');
         }
       });
@@ -92,16 +91,16 @@ export class AddEmployeeComponent {
     const newJob = this.fb.group({
       name: ['', Validators.required],
       start: ['', Validators.required],
-      isManagementRole: ['', Validators.required]
+      isManagementRole: [false, Validators.required]
     });
 
-    this.jobs.push(newJob);
+    this.jobPositions.push(newJob);
   }
   deleteJob(index: number) {
-    this.jobs.removeAt(index);
+    this.jobPositions.removeAt(index);
   }
-  get jobs() {
-    return this.empForm.get('jobs') as FormArray;
+  get jobPositions() {
+    return this.empForm.get('jobPositions') as FormArray;
   }
 
 }

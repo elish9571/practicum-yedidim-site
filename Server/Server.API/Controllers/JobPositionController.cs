@@ -48,7 +48,7 @@ namespace Server.API.Controllers
 
         // POST api/<JobPositionController>
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] JobPositionPostModel value)
+        public async Task<ActionResult> Post([FromBody] JobPosition value)
         {
             var jobToAdd = new JobPosition
             {
@@ -62,7 +62,7 @@ namespace Server.API.Controllers
 
         // PUT api/<JobPositionController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int id, [FromBody] JobPositionPostModel value)
+        public async Task<ActionResult> Put(int id, [FromBody] JobPosition value)
         {
             var jobToAdd = new JobPosition
             {

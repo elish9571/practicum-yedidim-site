@@ -1,18 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Job } from './job.model';
 import { Observable } from 'rxjs';
+import { JobPosition } from './jobPosition.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class JobService {
+export class JobPositionService {
 
   private apiUrl = 'https://localhost:7112/api/JobPosition';
 
   constructor(private http: HttpClient) { }
 
-  addJob(job: Job): Observable<Job> {
-    return this.http.put<Job>(this.apiUrl, job);
+  addJob(job: JobPosition): Observable<JobPosition> {
+    return this.http.put<JobPosition>(this.apiUrl, job);
   }
 }

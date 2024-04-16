@@ -47,7 +47,7 @@ namespace Server.API.Controllers
         }
         // POST api/<EmployeeController>
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] EmployeePostModel value)
+        public async Task<ActionResult> Post([FromBody] Employee value)
         {
             var empToAdd = new Employee {
 
@@ -66,7 +66,7 @@ namespace Server.API.Controllers
 
         // PUT api/<EmployeeController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int id, [FromBody] EmployeePostModel employee)
+        public async Task<ActionResult> Put(int id, [FromBody] Employee employee)
         {
             var empToPut = await _employeeService.GetEmployeesAsync(id);
             if (empToPut is null)
