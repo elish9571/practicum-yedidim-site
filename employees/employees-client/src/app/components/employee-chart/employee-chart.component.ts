@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
+
 @Component({
    selector: 'app-employees-chart',
    standalone: true,
@@ -32,7 +33,6 @@ export class EmployeeChartComponent implements AfterViewInit {
       this.dataSource.paginator = this.paginator;
       this.loadEmployees();
    }
-
    loadEmployees() {
       this.employeeService.getEmployees().subscribe(employees => {
          this.dataSource.data = employees;
@@ -40,7 +40,8 @@ export class EmployeeChartComponent implements AfterViewInit {
    }
 
    editEmployee(employeeId: number) {
-      this.route.navigate(['/allemployees', employeeId]);
+     console.log( this.employeeService.getEmployee(employeeId));
+      this.route.navigate(['/editemployee', employeeId]);
    }
 
    deleteEmployee(employeeId: number) {

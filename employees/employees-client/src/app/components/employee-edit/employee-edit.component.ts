@@ -1,43 +1,15 @@
-import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-employee-edit',
   standalone: true,
-  imports: [
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule, 
-    MatFormFieldModule,
-    MatInputModule,
-    MatMomentDateModule,
-    MatFormFieldModule,
-    MatInputModule, 
-    FormsModule, 
-    MatButtonModule, 
-    MatIconModule
-  ],
+  imports: [],
   templateUrl: './employee-edit.component.html',
   styleUrl: './employee-edit.component.css'
 })
-export class EmployeeEditComponent implements AfterViewInit {
+export class EmployeeEditComponent {
 
-  @ViewChild('inputElement') inputElement!: ElementRef;
-
-  startDate = new Date(1990, 0, 1);
-
-  ngAfterViewInit() {
-    this.inputElement.nativeElement.addEventListener('focus', () => {
-      this.inputElement.nativeElement.parentElement.classList.add('focus');
-    });
-  }
-
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
 }
+
