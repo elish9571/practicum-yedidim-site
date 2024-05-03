@@ -111,3 +111,6 @@ form {
     justify-content: center;
     align-items: center;
 }
+.btn-add-job{
+    margin-bottom: 20px;
+}

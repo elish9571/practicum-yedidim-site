@@ -34,7 +34,6 @@ namespace Server.Data.Repositories
             var temp = _context.Employees.Find(id);
             if (temp != null)
             {
-                temp.Id = employee.Id;
                 temp.FirstName = employee.FirstName;
                 temp.LastName = employee.LastName;
                 temp.Tz = employee.Tz;

@@ -68,7 +68,7 @@
                 <div class="form-group" *ngFor="let job of jobPositions.controls; let i = index" [formGroupName]="i">
                   <div class="col-sm-6">
                     <mat-form-field>
-                      <mat-label>Role name</mat-label>
+                      <mat-label>Position name</mat-label>
                       <mat-select formControlName="name">
                         <mat-option value="vehicles">🚗 extrication of vehicles</mat-option>
                         <mat-option value="wheels">🛞 changing wheels</mat-option>
@@ -100,12 +100,13 @@
                 </div>
               </div>
             </div>
-            <div class="clearfix">
-              <button type="button" class="btn btn-default btnmk" (click)="addJob()">Add Role</button>
+              <button class="btn-add-job" mat-button type="button" (click)="addJob()">
+                Add Position  
+                <mat-icon>playlist_add</mat-icon>
+               </button>
               <div class="clearfix"></div>
               <button type="button" class="btn btn-warning" (click)="onSubmit()">Save</button>
             </div>
-          </div>
         </form>
       </div>
     </div>

@@ -6,6 +6,8 @@ import { EmployeeService } from '../../employee/employee.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import * as XLSX from 'xlsx';
+import { MatDialog } from '@angular/material/dialog';
+import { EmployeeEditComponent } from './../employee-edit/employee-edit.component';
 import { saveAs } from 'file-saver';
 
 @Component({
@@ -28,7 +30,7 @@ export class EmployeeChartComponent implements AfterViewInit {
    @ViewChild('searchInput') searchInput!: ElementRef<HTMLInputElement>;
    @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-   constructor(private employeeService: EmployeeService, private route: Router, private elementRef: ElementRef) { }
+   constructor(private employeeService: EmployeeService, private route: Router, private elementRef: ElementRef, public dialog: MatDialog) { }
    ngAfterViewInit() {
       this.dataSource.paginator = this.paginator;
       this.loadEmployees();
@@ -38,12 +40,10 @@ export class EmployeeChartComponent implements AfterViewInit {
          this.dataSource.data = employees;
       });
    }
-
-   editEmployee(employeeId: number) {
-     console.log( this.employeeService.getEmployee(employeeId));
-      this.route.navigate(['/editemployee', employeeId]);
+   editEmployee(employee: Employee) {
+      console.log('Edit employee:', employee.id, employee);
+      this.route.navigate(['/editemployee', employee.id]);
    }
-
    deleteEmployee(employeeId: number) {
       if (confirm('Are you sure you want to delete this employee?')) {
          this.employeeService.deleteEmployee(employeeId).subscribe(() => {

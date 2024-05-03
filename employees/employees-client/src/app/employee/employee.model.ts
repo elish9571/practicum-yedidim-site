@@ -1,6 +1,7 @@
 import { JobPosition } from "../jobPosition/jobPosition.model"
 
 export class Employee {
+    id!:number
     firstName!:string
     lastName!: string
     tz!:string
@@ -8,5 +9,5 @@ export class Employee {
     birthDate!:Date
     isMale!: boolean 
     isDeleted!:boolean
-    jobPositions: JobPosition[] = []   
+    jobPositions:JobPosition[] = []   
 }
