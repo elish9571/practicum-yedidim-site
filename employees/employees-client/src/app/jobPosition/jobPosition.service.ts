@@ -15,4 +15,10 @@ export class JobPositionService {
   addJob(job: JobPosition): Observable<JobPosition> {
     return this.http.put<JobPosition>(this.apiUrl, job);
   }
+
+  deleteJob(idP: number, idE: number): Observable<JobPosition> {
+    console.log("dllllllllllllllllll",idP, idE)
+    return this.http.delete<JobPosition>(`${this.apiUrl}/${idP}/${idE}`);
+  }
+  
 }

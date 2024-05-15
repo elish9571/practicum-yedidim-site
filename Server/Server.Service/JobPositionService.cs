@@ -24,9 +24,9 @@ namespace Server.Service
         {
             return await _jobPositionRepository.UpdateJobAsync(id, job);
         }
-        public async Task DeleteJobAsync(int id)
+        public async Task DeleteJobAsync(int empId, int positionId)
         {
-            await _jobPositionRepository.DeleteJobAsync(id);
+            await _jobPositionRepository.DeleteJobAsync(empId,positionId);
         }
 
 

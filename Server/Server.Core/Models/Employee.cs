@@ -10,6 +10,6 @@
         public bool IsMale { get; set; }
         public DateTime BeginningOfWork { get; set; }
         public bool IsDeleted { get; set; }
-        public List<JobPosition> JobPositions { get; set; }
+        public List<EmployeeJobPosition> JobPositions { get; set; }
     }
 }

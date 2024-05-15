@@ -78,5 +78,7 @@ export class EmployeeChartComponent implements AfterViewInit {
       const data: Blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
       saveAs(data, `${fileName}_${new Date().getTime()}.xlsx`);
    }
-
+   print() {
+      window.print();
+   }
 }

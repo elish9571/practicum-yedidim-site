@@ -32,10 +32,12 @@ builder.Services.AddCors(opt => opt.AddPolicy("MyPolicy", policy =>
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRpository>();
 builder.Services.AddScoped<IJobPositionRepository, JobPositionRepository>();
+//builder.Services.AddScoped<IEmployeeJobPositionRepository, EmployeeJobPositionRepository>();
 
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IJobPositionService, JobPositionService>();
+//builder.Services.AddScoped<IEmployeeJobPositionService, EmployeeJobPositionService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProFile),typeof(PostModelsMappingProfile));
 builder.Services.AddDbContext<DataContext>();

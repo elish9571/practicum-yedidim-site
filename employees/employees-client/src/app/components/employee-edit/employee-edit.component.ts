@@ -31,17 +31,13 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./employee-edit.component.css']
 })
 export class EmployeeEditComponent implements OnInit {
+
   empToEdit: Employee | undefined;
   empEditForm: FormGroup;
   employeeId: number;
   jobPositions!: FormArray;
-  constructor(
-    private fb: FormBuilder,
-    private http: HttpClient,
-    private route: ActivatedRoute,
-    private dialog: MatDialog,
-    private employeeService: EmployeeService
-  ) {
+  private rolsCounter: number = 0;
+  constructor(private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute, private dialog: MatDialog, private employeeService: EmployeeService) {
     this.employeeId = Number(this.route.snapshot.paramMap.get('id'));
     this.empEditForm = this.createForm();
     this.jobPositions = this.empEditForm.get('jobPositions') as FormArray;
@@ -50,7 +46,6 @@ export class EmployeeEditComponent implements OnInit {
   ngOnInit(): void {
     this.loadEmployee(this.employeeId);
   }
-
   loadEmployee(empId: number): void {
     this.employeeService.getEmployee(empId).subscribe({
       next: (res) => {
@@ -64,7 +59,7 @@ export class EmployeeEditComponent implements OnInit {
           beginningOfWork: this.empToEdit.beginningOfWork,
         });
         this.jobPositionsFormArray.clear();
-console.log(this.empToEdit.jobPositions)
+        console.log(this.empToEdit.jobPositions)
         if (this.empToEdit.jobPositions && this.empToEdit.jobPositions.length > 0) {
           this.empToEdit.jobPositions.forEach(job => {
             this.addJobPosition(job);
@@ -77,7 +72,12 @@ console.log(this.empToEdit.jobPositions)
       }
     });
   }
-
+  roles = [
+    { value: 'vehicles',description: '🚗 extrication of vehicles', disabled: false },
+    { value: 'wheels',description: '🛞 changing wheels', disabled: false },
+    { value: 'field',description: '⛰️ rescue in field conditions', disabled: false },
+    { value: 'elevator',description: '🛗 elevator rescue', disabled: false }
+  ];
   createForm(): FormGroup {
     return this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(2)]],
@@ -90,18 +90,34 @@ console.log(this.empToEdit.jobPositions)
     });
   }
   addJobPosition(job?: any) {
-    const newJobGroup = this.fb.group({
-      name: [job ? job.name : '', Validators.required],
-      start: [job ? job.start : new Date(), Validators.required], 
-      isManagementRole: [job ? job.isManagementRole :'', Validators.required]
-    });
-    this.jobPositionsFormArray.push(newJobGroup);
-  }
-  
+    if (this.rolsCounter < 4) {
+      const newJobGroup = this.fb.group({
+        name: [job ? job.name : '', Validators.required],
+        start: [job ? job.start : new Date(), Validators.required],
+        isManagementRole: [job ? job.isManagementRole : '', Validators.required]
+      });
+      this.jobPositionsFormArray.push(newJobGroup);
 
-  onSubmit(): void {
-    if (this.empEditForm.valid) {
+      // Disable selected option
+      const selectedOption = newJobGroup.get('name')?.value;
+      const selectedRole = this.roles.find(role => role.value === selectedOption);
+      if (selectedRole) {
+        selectedRole.disabled = true;
+      }
+      
+      this.rolsCounter++;
+    }
+    else{
+      alert('Maximum job count reached.');
+      console.log('You can only add up to 4 job positions.');
+    }
+  }
+
+    onSubmit(): void {
+      console.log("this.empEditForm.value;",this.empEditForm.value)
+      if(true) {
       const employeeData = this.empEditForm.value;
+      console.log("employeeData",employeeData)
       this.employeeService.editEmployee(this.employeeId, employeeData).subscribe(
         () => {
           console.log('Employee details updated successfully');
@@ -140,4 +156,10 @@ console.log(this.empToEdit.jobPositions)
   removeJobPosition(index: number) {
     this.jobPositionsFormArray.removeAt(index);
   }
+
+
+  /*
+
+  */
+
 }

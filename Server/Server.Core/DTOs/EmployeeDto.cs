@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Server.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,6 @@ namespace Server.Core.DTOs
         public DateTime BeginningOfWork { get; set; }
         public DateTime BirthDate { get; set; }
         public bool IsMale { get; set; }
+        public List<EmployeeJobPositionDto> JobPositions { get; set; }
     }
 }

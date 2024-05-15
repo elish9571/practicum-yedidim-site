@@ -80,7 +80,7 @@ namespace Server.Data.Migrations
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("Server.Core.Models.JobPosition", b =>
+            modelBuilder.Entity("Server.Core.Models.EmployeeJobPosition", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -90,6 +90,9 @@ namespace Server.Data.Migrations
 
                     b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsManagementRole")
                         .HasColumnType("bit");
@@ -105,10 +108,27 @@ namespace Server.Data.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("JobPositions");
+                    b.ToTable("EmployeeJobPositions");
                 });
 
             modelBuilder.Entity("Server.Core.Models.JobPosition", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("JobPositions");
+                });
+
+            modelBuilder.Entity("Server.Core.Models.EmployeeJobPosition", b =>
                 {
                     b.HasOne("Server.Core.Models.Employee", null)
                         .WithMany("JobPositions")

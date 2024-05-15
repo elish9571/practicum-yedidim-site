@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Server.API.Models;
+using Server.Core.DTOs;
 using Server.Core.Models;
 
 namespace Server.API.Mapping
@@ -8,9 +9,10 @@ namespace Server.API.Mapping
     {
         public PostModelsMappingProfile() 
         {
-            CreateMap<AdminPostModel, Admin>();
-            CreateMap<EmployeePostModel, Employee>();
-            CreateMap<JobPositionPostModel, JobPosition>();
+            CreateMap<AdminPostModel, Admin>().ReverseMap();
+            CreateMap<EmployeePostModel, Employee>().ReverseMap();
+            CreateMap<JobPositionPostModel, JobPosition>().ReverseMap();
+            CreateMap<EmployeeJobPositionPostModel, EmployeeJobPosition>().ReverseMap();
         }
     }
 }

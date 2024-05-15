@@ -21,7 +21,10 @@ namespace Server.Data.Repositories
         }
         public async Task<Employee> GetEmployeeAsync(int id)
         {
-            return await _context.Employees.FindAsync(id);
+            return await _context.Employees
+                           .Where(e => e.IsDeleted == false&&e.Id==id)
+                           .Include(e => e.JobPositions)
+                           .FirstOrDefaultAsync();
         }
         public async Task<Employee> AddEmployeeAsync(Employee employee)
         {

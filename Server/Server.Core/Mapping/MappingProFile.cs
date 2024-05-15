@@ -10,6 +10,7 @@ namespace Server.Core.Mapping
         {
             CreateMap<Admin, AdminDto>().ReverseMap();
             CreateMap<Employee, EmployeeDto>().ReverseMap();
+            CreateMap<EmployeeJobPosition, EmployeeJobPositionDto>().ReverseMap();
             CreateMap<JobPosition, JobPositionDto>().ReverseMap();
         }
     }

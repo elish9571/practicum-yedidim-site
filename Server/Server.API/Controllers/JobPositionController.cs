@@ -53,8 +53,6 @@ namespace Server.API.Controllers
             var jobToAdd = new JobPosition
             {
                 Name = value.Name,
-                Start = value.Start,
-                IsManagementRole = value.IsManagementRole
             };
             await _jobPositionService.AddJobAsync(jobToAdd);
             return NoContent();
@@ -67,8 +65,6 @@ namespace Server.API.Controllers
             var jobToAdd = new JobPosition
             {
                 Name = value.Name,
-                Start = value.Start,
-                IsManagementRole = value.IsManagementRole
             };
             await _jobPositionService.UpdateJobAsync(id, jobToAdd);
             return NoContent();
@@ -76,9 +72,9 @@ namespace Server.API.Controllers
 
         // DELETE api/<JobPositionController>/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(int empId ,int positionId)
         {
-            await _jobPositionService.DeleteJobAsync(id);
+            await _jobPositionService.DeleteJobAsync(empId,positionId);
             return NoContent();
         }
     }

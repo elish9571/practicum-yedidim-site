@@ -29,9 +29,13 @@
               <div class="col-sm-6">
                 <mat-form-field>
                   <mat-label>ID</mat-label>
-                  <input matInput formControlName="tz" type="text" [id]="'tz'" [attr.aria-describedby]="'tz-error'" (input)="onInputIdChange($event)">
+                  <input matInput formControlName="tz" type="text" [id]="'tz'" [attr.aria-describedby]="'tz-error'"
+                    (input)="onInputIdChange($event)">
                   <mat-error *ngIf="empForm.get('tz')!.hasError('required') && empForm.get('tz')!.touched">
                     ID is required
+                  </mat-error>
+                  <mat-error *ngIf="empForm.get('tz')!.hasError('pattern') && empForm.get('tz')!.touched">
+                    ID should be 9 digits
                   </mat-error>
                 </mat-form-field>
               </div>
@@ -60,6 +64,8 @@
                   <mat-hint>MM/DD/YYYY</mat-hint>
                   <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
                   <mat-datepicker #picker1></mat-datepicker>
+                  <mat-error *ngIf="empForm.get('beginningOfWork')!.hasError('required') && empForm.get('beginningOfWork')!.touched ">
+                    Start work date is required</mat-error>
                 </mat-form-field>
               </div>
             </div>
@@ -100,13 +106,13 @@
                 </div>
               </div>
             </div>
-              <button class="btn-add-job" mat-button type="button" (click)="addJob()">
-                Add Position  
-                <mat-icon>playlist_add</mat-icon>
-               </button>
-              <div class="clearfix"></div>
-              <button type="button" class="btn btn-warning" (click)="onSubmit()">Save</button>
-            </div>
+            <button class="btn-add-job" mat-button type="button" (click)="addJob()">
+              Add Position
+              <mat-icon>playlist_add</mat-icon>
+            </button>
+            <div class="clearfix"></div>
+            <button type="button" class="btn btn-warning" (click)="onSubmit()">Save</button>
+          </div>
         </form>
       </div>
     </div>

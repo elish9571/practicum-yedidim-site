@@ -10,6 +10,6 @@ namespace Server.API.Models
         public DateTime BirthDate { get; set; }
         public DateTime BeginningOfWork { get; set; }
         public bool IsMale { get; set; }
-        public List<JobPositionPostModel> JobPositions { get; set; }
+        public List<EmployeeJobPositionPostModel> JobPositions { get; set; }
     }
 }

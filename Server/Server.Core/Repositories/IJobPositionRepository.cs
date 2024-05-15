@@ -11,6 +11,6 @@ namespace Server.Core.Repositories
 
         Task<JobPosition> UpdateJobAsync(int id, JobPosition job);
 
-        Task DeleteJobAsync(int id);
+        Task DeleteJobAsync(int empId,int positionId);
     }
 }

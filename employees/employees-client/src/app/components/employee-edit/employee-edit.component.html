@@ -108,20 +108,18 @@
               </div>
             </div>
             <div class="form-group" formArrayName="jobPositions">
-             
               <div class="clearfix"></div>
               <div *ngFor="let job of jobPositionsFormArray.controls; let i = index" [formGroupName]="i">
-              <div class="col-sm-6">
-                <mat-form-field>
-                  <mat-label>Position name</mat-label>
-                  <mat-select formControlName="name">
-                    <mat-option value="vehicles">🚗 extrication of vehicles</mat-option>
-                    <mat-option value="wheels">🛞 changing wheels</mat-option>
-                    <mat-option value="field">⛰️ rescue in field conditions</mat-option>
-                    <mat-option value="elevator">🛗 elevator rescue</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
+                <div class="col-sm-6">
+                  <mat-form-field>
+                    <mat-label>Position name</mat-label>
+                    <mat-select formControlName="name">
+                      <ng-container *ngFor="let role of roles">
+                        <mat-option *ngIf="!role.disabled" [value]="role.value">{{role.description}}</mat-option>
+                      </ng-container>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
                 <div class="col-sm-6">
                   <mat-form-field>
                     <mat-label for="start">Start position date</mat-label>
@@ -139,20 +137,18 @@
                     </mat-select>
                   </mat-form-field>
                 </div>
-                 <button mat-icon-button (click)="removeJobPosition(i)">
+                <button mat-icon-button (click)="removeJobPosition(i)">
                   <mat-icon>delete</mat-icon>
                 </button>
                 <div class="clearfix"></div>
               </div>
               <button class="btn-add-job" mat-button type="button" (click)="addJobPosition()">
-                Add Position  
+                Add Position
                 <mat-icon>playlist_add</mat-icon>
-               </button>
-              <button type="button" class="btn btn-warning" [disabled]="empEditForm.invalid" (click)="onSubmit() "> Save </button>
-
+              </button>
+              <button type="button" class="btn btn-warning" (click)="onSubmit() "> Save </button>
             </div>
           </div>
-
         </form>
       </div>
     </div>

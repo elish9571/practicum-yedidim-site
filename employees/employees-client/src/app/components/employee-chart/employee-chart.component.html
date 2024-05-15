@@ -5,8 +5,11 @@
     <input type="text" class="search-input" placeholder="Search..." [(ngModel)]="searchTerm" (keyup)="applyFilter()" />
     <button class="search-button" (click)="applyFilter()">Search</button>
   </div>
+  <div class="action-button-container">
   <!-- <button class="export-button" (click)="login()">Login</button> -->
-  <button class="exe-icon" (click)="exportToExcel()"><img src="../../../assets/exe-icon.png" alt="EXE Icon" /></button>
+  <button class="action-button-icon" (click)="exportToExcel()"><img src="../../../assets/exe-icon.png" alt="EXE Icon" /></button>
+  <button class="action-button-icon" (click)="print()"><img src="../../../assets/printer.png" alt="Print Icon" /></button>
+  </div>
 
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">

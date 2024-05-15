@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Server.Data.Migrations
 {
-    public partial class CreateDB : Migration
+    public partial class _1migration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,24 +48,38 @@ namespace Server.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Start = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsManagementRole = table.Column<bool>(type: "bit", nullable: false),
-                    EmployeeId = table.Column<int>(type: "int", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_JobPositions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EmployeeJobPositions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Start = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsManagementRole = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    EmployeeId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmployeeJobPositions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_JobPositions_Employees_EmployeeId",
+                        name: "FK_EmployeeJobPositions_Employees_EmployeeId",
                         column: x => x.EmployeeId,
                         principalTable: "Employees",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_JobPositions_EmployeeId",
-                table: "JobPositions",
+                name: "IX_EmployeeJobPositions_EmployeeId",
+                table: "EmployeeJobPositions",
                 column: "EmployeeId");
         }
 
@@ -73,6 +87,9 @@ namespace Server.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Admin");
+
+            migrationBuilder.DropTable(
+                name: "EmployeeJobPositions");
 
             migrationBuilder.DropTable(
                 name: "JobPositions");
