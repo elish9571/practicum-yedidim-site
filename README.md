@@ -1,7 +1,7 @@
 
 # מערכת ניהול עובדים | Angular 17
 
-פרויקט זה הוא מערכת לניהול עובדים שנבנתה עם Angular 17. המערכת כוללת ממשק ידידותי למשתמש לניהול רשומות עובדים, כולל הוספה, עריכה ומחיקה לוגית של עובדים. המשתמשים יכולים לחפש עובדים ולייצא את הרשימה לקובץ Excel.
+פרויקט זה הוא מערכת לניהול עובדים שפותחה באמצעות טכנולוגיות .NET ו- Angular. המערכת כוללת ממשק ידידותי למשתמש לניהול רשומות עובדים, כולל הוספה, עריכה ומחיקה לוגית של עובדים. המשתמשים יכולים לחפש עובדים ולייצא את הרשימה לקובץ Excel.
 
 ## תכונות
 
@@ -21,7 +21,7 @@
 
 # Employee Management System | Angular 17
 
-This project is an employee management system built with Angular 17. It features a user-friendly interface for managing employee records, including adding, editing, and logically deleting employees. Users can search for employees and export the list to an Excel file.
+This project is an employee management system developed using .NET and Angular. It features a user-friendly interface for managing employee records, including adding, editing, and logically deleting employees. Users can search for employees and export the list to an Excel file.
 
 ## Features
 
