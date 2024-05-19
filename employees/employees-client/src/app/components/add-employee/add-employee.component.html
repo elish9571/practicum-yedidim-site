@@ -1,5 +1,12 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  rel="stylesheet"
+/>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -16,25 +23,31 @@
             <div class="form-group">
               <div class="col-sm-6">
                 <mat-form-field>
-                  <mat-label>First name</mat-label>
-                  <input matInput formControlName="firstName" type="text">
+                  <mat-label>First Name</mat-label>
+                  <input matInput formControlName="firstName" type="text" />
+                  <mat-error *ngIf="empForm.get('firstName')!.hasError('required') && empForm.get('firstName')!.touched">
+                    First Name is required
+                  </mat-error>
                 </mat-form-field>
               </div>
               <div class="col-sm-6">
                 <mat-form-field>
-                  <mat-label>Last name</mat-label>
-                  <input matInput formControlName="lastName" type="text">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput formControlName="lastName" type="text" />
+                  <mat-error *ngIf="empForm.get('firstName')!.hasError('required') && empForm.get('firstName')!.touched">
+                    Last Name is required
+                  </mat-error>
                 </mat-form-field>
               </div>
               <div class="col-sm-6">
                 <mat-form-field>
                   <mat-label>ID</mat-label>
-                  <input matInput formControlName="tz" type="text" [id]="'tz'" [attr.aria-describedby]="'tz-error'"
-                    (input)="onInputIdChange($event)">
+                  <input matInput formControlName="tz" type="text" [id]="'tz'" [attr.aria-describedby]="'tz-error'" (input)="onInputIdChange($event)"/>
                   <mat-error *ngIf="empForm.get('tz')!.hasError('required') && empForm.get('tz')!.touched">
                     ID is required
                   </mat-error>
-                  <mat-error *ngIf="empForm.get('tz')!.hasError('pattern') && empForm.get('tz')!.touched">
+                  <mat-error
+                    *ngIf="empForm.get('tz')!.hasError('pattern') && empForm.get('tz')!.touched">
                     ID should be 9 digits
                   </mat-error>
                 </mat-form-field>
@@ -42,10 +55,15 @@
               <div class="col-sm-6">
                 <mat-form-field>
                   <mat-label>Birth date</mat-label>
-                  <input matInput formControlName="birthDate" [matDatepicker]="picker">
+                  <input matInput formControlName="birthDate" [matDatepicker]="picker" />
                   <mat-hint>MM/DD/YYYY</mat-hint>
                   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
+                  <mat-error *ngIf="empForm.get('birthDate')?.invalid">
+                    <span *ngIf="empForm.get('birthDate')?.errors?.['required']">Birth date field is required</span>
+                    <span *ngIf="empForm.get('birthDate')?.errors?.['underage']"
+                      >Must be at least 18 years old</span>
+                  </mat-error>
                 </mat-form-field>
               </div>
               <div class="col-sm-6">
@@ -60,18 +78,24 @@
               <div class="col-sm-6">
                 <mat-form-field>
                   <mat-label>Start work date</mat-label>
-                  <input matInput formControlName="beginningOfWork" [matDatepicker]="picker1">
+                  <input matInput formControlName="beginningOfWork" [matDatepicker]="picker1" />
                   <mat-hint>MM/DD/YYYY</mat-hint>
                   <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
                   <mat-datepicker #picker1></mat-datepicker>
-                  <mat-error *ngIf="empForm.get('beginningOfWork')!.hasError('required') && empForm.get('beginningOfWork')!.touched ">
-                    Start work date is required</mat-error>
+                  <mat-error *ngIf="empForm.get('birthDate')?.invalid">
+                    <span *ngIf="empForm.get('birthDate')?.errors?.['required']"
+                      >Start work date field is required</span>
+                  </mat-error>
                 </mat-form-field>
               </div>
             </div>
             <div class="form-group">
               <div formArrayName="jobPositions">
-                <div class="form-group" *ngFor="let job of jobPositions.controls; let i = index" [formGroupName]="i">
+                <div
+                  class="form-group"
+                  *ngFor="let job of jobPositions.controls; let i = index"
+                  [formGroupName]="i"
+                >
                   <div class="col-sm-6">
                     <mat-form-field>
                       <mat-label>Position name</mat-label>
@@ -81,14 +105,22 @@
                         <mat-option value="field">⛰️ rescue in field conditions</mat-option>
                         <mat-option value="elevator">🛗 elevator rescue</mat-option>
                       </mat-select>
+                      <mat-error *ngIf="job.get('name')?.invalid">
+                      <span *ngIf="job.get('name')?.errors?.['required']">
+                        Position name is required</span>
+                    </mat-error>
                     </mat-form-field>
                   </div>
                   <div class="col-sm-6">
                     <mat-form-field>
-                      <mat-label for="start">Start role date</mat-label>
-                      <input matInput formControlName="start" [matDatepicker]="picker2">
+                      <mat-label for="start">Start Position Date</mat-label>
+                      <input matInput formControlName="start" [matDatepicker]="picker2" />
                       <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
                       <mat-datepicker #picker2></mat-datepicker>
+                      <mat-error *ngIf="job.get('start')?.invalid">
+                      <span *ngIf="job.get('start')?.errors?.['required']">Start Position Date is required</span>
+                    <span *ngIf="job.get('start')?.errors?.['laterThenValidator']">Invalid Date</span>
+                    </mat-error>
                     </mat-form-field>
                   </div>
                   <div class="col-sm-6">
@@ -101,8 +133,13 @@
                     </mat-form-field>
                   </div>
 
-                  <button type="button" class="btn btn-default btnmk justify-content-center" (click)="deleteJob(i)"><i
-                      class="fas fa-trash-alt"></i></button>
+                  <button
+                    type="button"
+                    class="btn btn-default btnmk justify-content-center"
+                    (click)="deleteJob(i)"
+                  >
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
                 </div>
               </div>
             </div>

@@ -1,5 +1,7 @@
-export class JobPosition { 
-    name!: string
-    start!: Date
-    isManagementRole!: boolean
+export class JobPosition {
+  id!: number;
+
+  name!: string;
+  start!: Date;
+  isManagementRole!: boolean;
 }

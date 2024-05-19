@@ -4,16 +4,15 @@ import { Observable } from 'rxjs';
 import { Employee } from './employee.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EmployeeService {
-
   private apiUrl = 'https://localhost:7112/api/Employee';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getEmployees(): Observable<Employee[]> {
-    console.log("get-employees");
+    console.log('get-employees');
     return this.http.get<Employee[]>(this.apiUrl);
   }
 
@@ -31,4 +30,3 @@ export class EmployeeService {
     return this.http.put<any>(`${this.apiUrl}/${id}`, employee);
   }
 }
-

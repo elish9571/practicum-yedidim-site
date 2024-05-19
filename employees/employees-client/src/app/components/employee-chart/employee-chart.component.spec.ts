@@ -8,10 +8,9 @@ describe('EmployeeChartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EmployeeChartComponent]
-    })
-    .compileComponents();
-    
+      imports: [EmployeeChartComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(EmployeeChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

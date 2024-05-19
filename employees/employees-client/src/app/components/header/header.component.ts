@@ -6,23 +6,19 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [
-    MatTooltipModule,
-    MatButtonModule,
-  ],
+  imports: [MatTooltipModule, MatButtonModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-
-  constructor(private route: Router) { }
+  constructor(private route: Router) {}
   toHomePage() {
     this.route.navigate(['allemployees']);
   }
-  toAddEmployee(){
+  toAddEmployee() {
     this.route.navigate(['addemployee']);
   }
-  toAbout(){
+  toAbout() {
     this.route.navigate(['about']);
   }
 }

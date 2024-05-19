@@ -7,7 +7,7 @@ table {
     'FILL' 0,
     'wght' 400,
     'GRAD' 0,
-    'opsz' 24
+    'opsz' 24;
 }
 
 .button {
@@ -27,7 +27,7 @@ table {
 
 .search-container {
   margin-bottom: 20px;
-  display:flex;
+  display: flex;
   justify-content: flex-start;
   border-radius: 0.2em;
   overflow: hidden;

@@ -1,116 +1,126 @@
 :root {
-    --color_0: #000;
-    --color_1: #fff;
-    --color_2: #2655c1;
-    --color_3: #372f7f;
+  --color_0: #000;
+  --color_1: #fff;
+  --color_2: #2655c1;
+  --color_3: #372f7f;
 }
 .form-bg {
-    background: #efeeee;
-    margin: 0 auto;
-    padding: 50px;
+  background: #efeeee;
+  margin: 0 auto;
+  padding: 50px;
 }
 
 form {
-    font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .form-horizontal .header {
-    background: linear-gradient(135deg, var(--color_2), var(--color_3), var(--color_2), var(--color_3));
-    padding: 30px 25px;
-    font-size: 30px;
-    color: #fff;
-    text-align: center;
-    text-transform: uppercase;
-    border-radius: 3px 3px 0 0;
+  background: linear-gradient(
+    135deg,
+    var(--color_2),
+    var(--color_3),
+    var(--color_2),
+    var(--color_3)
+  );
+  padding: 30px 25px;
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 3px 3px 0 0;
 }
 
 .form-horizontal .heading {
-    font-size: 16px;
-    color: #2655c1;
-    margin: 10px 0 20px 0;
-    text-transform: capitalize;
+  font-size: 16px;
+  color: #2655c1;
+  margin: 10px 0 20px 0;
+  text-transform: capitalize;
 }
 
 .form-horizontal .form-content {
-    padding: 70px;
-    background: #fff;
+  padding: 70px;
+  background: #fff;
 }
 
 .form-horizontal .form-control {
-    padding: 12px 16px 12px 39px;
-    height: 73px;
-    font-size: 16px;
-    color: #2b2a2a;
-    border: none;
-    border-bottom: 2px solid #ccc;
-    border-radius: 0.1;
-    box-shadow: none;
-    margin-bottom: 15px;
+  padding: 12px 16px 12px 39px;
+  height: 73px;
+  font-size: 16px;
+  color: #2b2a2a;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  border-radius: 0.1;
+  box-shadow: none;
+  margin-bottom: 15px;
 }
 
 .form-horizontal .form-control:focus {
-    border-color: #2655c1;
-    box-shadow: none;
+  border-color: #2655c1;
+  box-shadow: none;
 }
 
 .form-horizontal .control-label {
-    font-size: 17px;
-    color: #ccc;
-    position: absolute;
-    top: 5px;
-    left: 27px;
-    text-align: center;
+  font-size: 17px;
+  color: #ccc;
+  position: absolute;
+  top: 5px;
+  left: 27px;
+  text-align: center;
 }
 
 .form-horizontal textarea.form-control {
-    resize: vertical;
-    height: 130px;
+  resize: vertical;
+  height: 130px;
 }
 
 .form-horizontal .btn {
-    font-size: 18px;
-    color: #4e4e4e;
-    float: right;
-    margin: 10px 0;
-    border: 2px solid #ccc;
-    border-radius: 0.3;
-    padding: 7px 15px;
-    transition: all 0.5s ease 0s;
+  font-size: 18px;
+  color: #4e4e4e;
+  float: right;
+  margin: 10px 0;
+  border: 2px solid #ccc;
+  border-radius: 0.3;
+  padding: 7px 15px;
+  transition: all 0.5s ease 0s;
 }
 
 .btnmk {
-    background: linear-gradient(135deg, var(--color_2), var(--color_3), var(--color_2), var(--color_3));
-    color: var(--color_1) !important;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  background: linear-gradient(
+    135deg,
+    var(--color_2),
+    var(--color_3),
+    var(--color_2),
+    var(--color_3)
+  );
+  color: var(--color_1) !important;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
 .form-horizontal .btn:hover {
-    background: #fff;
-    border-color: #2655c1;
-    color: #000 !important;
+  background: #fff;
+  border-color: #2655c1;
+  color: #000 !important;
 }
 
 .col-sm-6 {
-    float: left;
+  float: left;
 }
 
 .col-md-offset-2.col-md-6 {
-
-    margin: 0 auto;
-
+  margin: 0 auto;
 }
 
 :host {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .justify-content-center {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
-.btn-add-job{
-    margin-bottom: 20px;
+.btn-add-job {
+  margin-bottom: 20px;
 }

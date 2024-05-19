@@ -41,8 +41,15 @@
   </form>
 </div>
  -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  rel="stylesheet"
+/>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -60,21 +67,31 @@
               <div class="col-sm-6">
                 <mat-form-field>
                   <mat-label>First name</mat-label>
-                  <input matInput formControlName="firstName" type="text">
+                  <input matInput formControlName="firstName" type="text" />
                 </mat-form-field>
               </div>
               <div class="col-sm-6">
                 <mat-form-field>
                   <mat-label>Last name</mat-label>
-                  <input matInput formControlName="lastName" type="text">
+                  <input matInput formControlName="lastName" type="text" />
                 </mat-form-field>
               </div>
               <div class="col-sm-6">
                 <mat-form-field>
                   <mat-label>ID</mat-label>
-                  <input matInput formControlName="tz" type="text" [id]="'tz'" [attr.aria-describedby]="'tz-error'"
-                    (input)="onInputIdChange($event)">
-                  <mat-error *ngIf="empEditForm.get('tz')!.hasError('required') && empEditForm.get('tz')!.touched">
+                  <input
+                    matInput
+                    formControlName="tz"
+                    type="text"
+                    [id]="'tz'"
+                    [attr.aria-describedby]="'tz-error'"
+                    (input)="onInputIdChange($event)"
+                  />
+                  <mat-error
+                    *ngIf="
+                      empEditForm.get('tz')!.hasError('required') && empEditForm.get('tz')!.touched
+                    "
+                  >
                     ID is required
                   </mat-error>
                 </mat-form-field>
@@ -82,7 +99,7 @@
               <div class="col-sm-6">
                 <mat-form-field>
                   <mat-label>Birth date</mat-label>
-                  <input matInput formControlName="birthDate" [matDatepicker]="picker">
+                  <input matInput formControlName="birthDate" [matDatepicker]="picker" />
                   <mat-hint>MM/DD/YYYY</mat-hint>
                   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
@@ -100,7 +117,7 @@
               <div class="col-sm-6">
                 <mat-form-field>
                   <mat-label>Start work date</mat-label>
-                  <input matInput formControlName="beginningOfWork" [matDatepicker]="picker1">
+                  <input matInput formControlName="beginningOfWork" [matDatepicker]="picker1" />
                   <mat-hint>MM/DD/YYYY</mat-hint>
                   <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
                   <mat-datepicker #picker1></mat-datepicker>
@@ -109,13 +126,18 @@
             </div>
             <div class="form-group" formArrayName="jobPositions">
               <div class="clearfix"></div>
-              <div *ngFor="let job of jobPositionsFormArray.controls; let i = index" [formGroupName]="i">
+              <div
+                *ngFor="let job of jobPositionsFormArray.controls; let i = index"
+                [formGroupName]="i"
+              >
                 <div class="col-sm-6">
                   <mat-form-field>
                     <mat-label>Position name</mat-label>
                     <mat-select formControlName="name">
                       <ng-container *ngFor="let role of roles">
-                        <mat-option *ngIf="!role.disabled" [value]="role.value">{{role.description}}</mat-option>
+                        <mat-option *ngIf="!role.disabled" [value]="role.value">{{
+                          role.description
+                        }}</mat-option>
                       </ng-container>
                     </mat-select>
                   </mat-form-field>
@@ -123,7 +145,7 @@
                 <div class="col-sm-6">
                   <mat-form-field>
                     <mat-label for="start">Start position date</mat-label>
-                    <input matInput formControlName="start" [matDatepicker]="picker2">
+                    <input matInput formControlName="start" [matDatepicker]="picker2" />
                     <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
                     <mat-datepicker #picker2></mat-datepicker>
                   </mat-form-field>
@@ -146,7 +168,7 @@
                 Add Position
                 <mat-icon>playlist_add</mat-icon>
               </button>
-              <button type="button" class="btn btn-warning" (click)="onSubmit() "> Save </button>
+              <button type="button" class="btn btn-warning" (click)="onSubmit()">Save</button>
             </div>
           </div>
         </form>

@@ -20,9 +20,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     CommonModule,
     MatDialogModule,
     MatNativeDateModule,
-    MatDatepickerModule 
+    MatDatepickerModule,
   ],
   providers: [DatePipe],
-  bootstrap: []
+  bootstrap: [],
 })
-export class AppModule { }
+export class AppModule {}

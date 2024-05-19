@@ -1,8 +1,8 @@
 {
-    "/api/*": {
-        "target": "https://localhost:7112",
-        "secure": false,
-        "changeOrigin": true
-    },
-    "ssl": false
+  "/api/*": {
+    "target": "https://localhost:7112",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "ssl": false
 }

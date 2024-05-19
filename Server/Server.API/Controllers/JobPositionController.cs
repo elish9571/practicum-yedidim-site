@@ -71,7 +71,7 @@ namespace Server.API.Controllers
         }
 
         // DELETE api/<JobPositionController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public async Task<ActionResult> Delete(int empId ,int positionId)
         {
             await _jobPositionService.DeleteJobAsync(empId,positionId);
